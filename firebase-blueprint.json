@@ -1,0 +1,65 @@
+{
+  "entities": {
+    "Task": {
+      "title": "Task",
+      "description": "A focus task with deadline and urgency information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "deadline": { "type": "string", "format": "date-time" },
+        "priority": { "type": "string", "enum": ["low", "medium", "high"] },
+        "category": { "type": "string" },
+        "impact": { "type": "integer" },
+        "dependencies": { "type": "array" },
+        "status": { "type": "string", "enum": ["todo", "doing", "done"] },
+        "completedAt": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "userId": { "type": "string" },
+        "urgencyScore": { "type": "number" }
+      },
+      "required": ["id", "title", "priority", "status", "createdAt", "userId"]
+    },
+    "UserStats": {
+      "title": "UserStats",
+      "description": "Aggregation statistics for a user",
+      "type": "object",
+      "properties": {
+        "streak": { "type": "integer" },
+        "lastCompletedDate": { "type": "string" },
+        "totalCompleted": { "type": "integer" },
+        "totalTasks": { "type": "integer" },
+        "history": { "type": "array" }
+      },
+      "required": ["streak", "totalCompleted", "totalTasks", "history"]
+    },
+    "User": {
+      "title": "User",
+      "description": "User profile information saved on authentication",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "lastLoginAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    }
+  },
+  "firestore": {
+    "tasks": {
+      "schema": "Task",
+      "description": "Collection of tasks"
+    },
+    "user_stats": {
+      "schema": "UserStats",
+      "description": "Collection of aggregate user statistics"
+    },
+    "users": {
+      "schema": "User",
+      "description": "Collection of authenticated user accounts"
+    }
+  }
+}

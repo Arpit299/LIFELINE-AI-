@@ -1,0 +1,6 @@
+{
+  "name": "Lifeline AI",
+  "description": "A modern task dashboard with dynamic priority tracking, active backlog management, and performance summaries.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
